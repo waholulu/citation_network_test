@@ -1,9 +1,8 @@
 {
-  "api_key": "YOUR_OPENALEX_API_KEY",
-  "email": "you@example.com",
+  "api_key": "IYNwcbJ7B7yuQb0zpOxGgU",
+  "email": "waholulu@gmail.com",
   "journals": [
-    "S4210209073",
-    "S123456789"
+    "S79990064"
   ],
   "db": "data/openalex_citations.db",
   "delay_s": 0.1

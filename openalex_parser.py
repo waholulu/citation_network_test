@@ -389,14 +389,14 @@ def run_crawl(client: OpenAlexClient, db_path: str, journals: list[str], delay_s
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="OpenAlex journal citation network parser")
-    parser.add_argument(
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    common = argparse.ArgumentParser(add_help=False)
+    common.add_argument(
         "--config",
         default=None,
         help="Path to JSON config file, e.g. {\"api_key\":..., \"email\":..., \"journals\":[...]}",
     )
-    subparsers = parser.add_subparsers(dest="command", required=True)
-
-    common = argparse.ArgumentParser(add_help=False)
     common.add_argument("--api-key", default=None, help="OpenAlex API key")
     common.add_argument("--email", default=None, help="Contact email for polite pool")
 
@@ -405,8 +405,8 @@ def parse_args() -> argparse.Namespace:
 
     crawl_parser = subparsers.add_parser("crawl", parents=[common], help="Run crawler")
     crawl_parser.add_argument("--journals", nargs="+", required=False, help="OpenAlex source IDs")
-    crawl_parser.add_argument("--db", default="openalex_citations.db", help="SQLite db path")
-    crawl_parser.add_argument("--delay-s", type=float, default=0.0, help="Delay between page requests")
+    crawl_parser.add_argument("--db", default=None, help="SQLite db path")
+    crawl_parser.add_argument("--delay-s", type=float, default=None, help="Delay between page requests")
 
     return parser.parse_args()
 
