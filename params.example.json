@@ -1,0 +1,10 @@
+{
+  "api_key": "YOUR_OPENALEX_API_KEY",
+  "email": "you@example.com",
+  "journals": [
+    "S4210209073",
+    "S123456789"
+  ],
+  "db": "data/openalex_citations.db",
+  "delay_s": 0.1
+}
